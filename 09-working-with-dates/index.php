@@ -1,5 +1,35 @@
 <?php
-$output = null;
+
+// year
+$output = date('Y');
+
+// get year from timestamp
+$output = date('Y', 936345600);
+
+// get timestamp from strtotime
+$output = date('Y', strtotime('1991-12-26'));
+
+// get month
+$output = date('m');
+
+// get day
+$output = date('Y-m-d');
+
+// get hour
+$output = date('h');
+
+// get minute
+$output = date('i');
+
+// get second
+$output = date('s');
+
+// get am/pm
+$output = date('a');
+
+// put it all together
+$output = date('Y-m-d h:i:s a');
+
 ?>
 
 <!DOCTYPE html>
