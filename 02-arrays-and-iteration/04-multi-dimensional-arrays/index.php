@@ -1,5 +1,37 @@
 <?php
 $output = null;
+
+$fruits = [
+    ['Apple', 'Red'],
+    ['Orange', 'Orange'],
+    ['Banana', 'Yellow']
+];
+
+$output = $fruits[2][1];
+
+$fruits[] = ['Grapes', 'Purple'];
+
+
+$users = [
+    ['name' => 'John', 'age' => 30],
+    ['name' => 'Jane', 'age' => 25],
+    ['name' => 'Doe', 'age' => 35]
+];
+
+$output = $users[2]["age"];
+
+$users[] = ['name' => 'Smith', 'age' => 28];
+
+array_push($users, ['name' => 'Emily', 'age' => 22]);
+
+array_pop($users);
+
+array_shift($users);
+
+unset($users[1]);
+
+$output = count($users);
+
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +54,11 @@ $output = null;
     <div class="bg-white rounded-lg shadow-md p-6 mt-6">
       <!-- Output -->
       <p class="text-xl"><?= $output ?></p>
+      <p>
+        <pre>
+          <?php print_r($users); ?>
+        </pre>
+      </p>
     </div>
   </div>
 </body>
