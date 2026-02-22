@@ -1,5 +1,38 @@
 <?php
 $output = null;
+$str = "Hello, World!";
+
+// strlen()
+$output = strlen($str);
+
+// str_word_count()
+$output = str_word_count($str);
+
+// strpos()
+$output = strpos($str, "World");
+
+// Get Specific char by index
+$output = $str[4];
+
+// substr()
+$output = substr($str, strpos($str, "World"), strlen("World"));
+
+// str_replace()
+$output = str_replace("World", "PHP", $str);
+
+// strtolower()
+$output = strtolower($str);
+
+// strtoupper()
+$output = strtoupper($str);
+
+// ucwords
+$output = ucwords($str);
+
+// trim()
+$str2 = "   Hello, World!   ";
+$output = trim($str2);
+
 ?>
 
 <!DOCTYPE html>
