@@ -1,3 +1,13 @@
+<?php
+
+// for ($i = 0; $i < 5; $i++) {
+//     for ($j = 0; $j < 5; $j++) {
+//       echo $i . ' - ' . $j . '<br>';
+//     }
+// }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,6 +36,11 @@
 
 <body>
   <div class="grid-container">
+    <?php for ($i = 0; $i < 5; $i++) : ?>
+      <?php for ($j = 0; $j < 5; $j++) : ?>
+        <div class="grid-item"><?php echo $i . ' - ' . $j ?></div>
+      <?php endfor; ?>
+    <?php endfor; ?>
   </div>
 </body>
 
