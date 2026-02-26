@@ -41,6 +41,18 @@ $listings = [
     'tags' => []
   ],
 ];
+
+function formatSalary($salary)
+{
+  return '$' . number_format($salary, 2);
+} 
+
+function highlightTag($tags, $toHighlight)
+{
+  $tagStr = implode(', ', $tags);
+  return str_replace($toHighlight, "<span class='bg-yellow-200'> $toHighlight </span>", $tagStr);
+}
+
 ?>
 
 
@@ -69,7 +81,7 @@ $listings = [
             <p class="text-gray-700 text-lg mt-2"><?= $job['description'] ?></p>
             <ul class="mt-4">
               <li class="mb-2">
-                <strong>Salary:</strong> <?= $job['salary'] ?>
+                <strong>Salary:</strong> <?= formatSalary($job['salary']) ?>
               </li>
               <li class="mb-2">
                 <strong>Location:</strong> <?= $job['location'] ?>
@@ -78,7 +90,7 @@ $listings = [
               </li>
               <?php if (!empty($job['tags'])) : ?>
                 <li class="mb-2">
-                  <strong>Tags:</strong> <?= implode(', ', $job['tags']) ?>
+                  <strong>Tags:</strong> <?= highlightTag($job['tags'], 'Software Development') ?>
                 </li>
               <?php endif; ?>
             </ul>
