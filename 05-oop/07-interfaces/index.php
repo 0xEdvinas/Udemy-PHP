@@ -1,3 +1,62 @@
+<?php
+
+interface ContentInterface
+{
+  public function display();
+  public function edit();
+}
+
+class Article implements ContentInterface
+{
+  private $title;
+  private $content;
+
+  public function __construct($title, $content)
+  {
+    $this->title = $title;
+    $this->content = $content;
+  }
+
+  public function display()
+  {
+    echo "<h2>{$this->title}</h2>";
+    echo "<p>{$this->content}</p>";
+  }
+
+  public function edit()
+  {
+    echo "Editing article: {$this->title}";
+  }
+}
+
+class Video implements ContentInterface
+{
+  private $title;
+  private $url;
+
+  public function __construct($title, $url)
+  {
+    $this->title = $title;
+    $this->url = $url;
+  }
+
+  public function display()
+  {
+    echo "<h2>{$this->title}</h2>";
+    echo "<video src='{$this->url}' controls></video>";
+  }
+
+  public function edit()
+  {
+    echo "Editing video: {$this->title}";
+  }
+}
+
+$article = new Article("My First Article", "This is the content of my first article.");
+$video = new Video("My First Video", "video.mp4");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +76,15 @@
   <div class="container mx-auto p-4 mt-4">
     <div class="bg-white rounded-lg shadow-md p-6 mt-6">
       <!-- Output -->
+      <?php
+      $article->display();
+      ?>
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-6 mt-6">
+      <!-- Output -->
+      <?php
+      $video->display();
+      ?>
     </div>
   </div>
 </body>
