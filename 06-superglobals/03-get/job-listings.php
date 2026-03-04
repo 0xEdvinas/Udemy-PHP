@@ -107,7 +107,7 @@ if (isset($_GET['location']) && in_array($_GET['location'], $validLocations)) {
   </header>
   <div class="container mx-auto p-4 mt-4">
     <div class="bg-green-100 rounded-lg shadow-md p-6 my-6">
-      <h2 class="text-2xl font-semibold mb-4">Average Salary: <?= calculateAverageSalary($listings)  ?></h2>
+      <h2 class="text-2xl font-semibold mb-4">Average Salary: <?= calculateAverageSalary($filteredArray)  ?></h2>
     </div>
     <!-- Output -->
     <?php foreach ($filteredArray as $index => $job) : ?>
