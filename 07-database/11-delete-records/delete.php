@@ -12,7 +12,7 @@ function deletePost($id)
   $stmt->execute(['id' => $id]);
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['_method'] === 'delete' && isset($_POST['id']))
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['_method'] ?? '' === 'delete') && isset($_POST['id']))
 {
   $id = $_POST['id'];
   deletePost($id);
