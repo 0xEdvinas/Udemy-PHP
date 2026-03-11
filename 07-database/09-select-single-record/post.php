@@ -1,3 +1,34 @@
+<?php
+  require 'database.php';
+
+  function validID($id) {
+    global $pdo;
+
+    $stmnt = $pdo->prepare('SELECT COUNT(*) FROM posts WHERE id = :id');
+    $stmnt->bindValue(':id', $id, PDO::PARAM_INT);
+    $stmnt->execute();
+
+    $res = $stmnt->fetchColumn();
+
+    return $res > 0;
+  }
+
+  if (isset($_GET['id'])) {
+    $id = $_GET['id'] ?? null;
+    
+    if (!validID($id)) {
+      header('Location: index.php');
+      exit;
+    }
+
+    $stmnt = $pdo->prepare('SELECT * FROM posts WHERE id = :id');
+    $stmnt->bindValue(':id', $id, PDO::PARAM_INT);
+    $stmnt->execute();
+
+    $post = $stmnt->fetch();
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,8 +49,8 @@
     <div class="md my-4">
       <div class="rounded-lg shadow-md">
         <div class="p-4">
-          <h2 class="text-xl font-semibold">Post One</h2>
-          <p class="text-gray-700 text-lg mt-2 mb-5">This is post one</p>
+          <h2 class="text-xl font-semibold"><?= htmlspecialchars($post['title']) ?></h2>
+          <p class="text-gray-700 text-lg mt-2 mb-5"><?= htmlspecialchars($post['body']) ?></p>
           <a href="index.php">Go Back</a>
         </div>
       </div>
